@@ -1,0 +1,63 @@
+package program2method2;
+
+import java.util.Scanner;
+
+class PrintTop5Words {
+   public static void main(String args[]) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter the Paragraph");
+		String string = input.nextLine();
+        String[] splitstring = string.split("\\s");
+		String[] toStore = new String[splitstring.length];
+		String[] Sort = new String[string.length()];
+        int count = 0;int count1 = 0;
+		String temp = "";
+		int k = 0;    // array index 
+
+		for (int i = 0; i < splitstring.length; i++) 
+		{   count = 1;
+          	for (int j = i + 1; j < splitstring.length; j++) 
+			{
+				if (splitstring[i].equals(splitstring[j])) 
+				{
+					temp = splitstring[i];
+					splitstring[j] = "";
+					count++;
+				}
+			}
+			if (temp != "")
+				temp = count + " times of "+ temp;
+         	toStore[k++] = temp;
+			temp = "";
+
+		}
+
+		for (int m = 0; m < k; m++) 
+		{
+			if (!toStore[m].equals("")) 
+			{
+				Sort[count1++] = toStore[m];
+			}
+		}
+
+		for (int m = 0; m < count1; m++) 
+		{
+			for (int n = m + 1; n < count1; n++) 
+			{
+				if (Integer.parseInt("" + Sort[m].charAt(0)) < Integer.parseInt("" + Sort[n].charAt(0))) 
+				{
+					temp = Sort[m];
+					Sort[m] = Sort[n];
+					Sort[n] = temp;
+				}
+			}
+		}
+
+		for (int z = 0; z < count1; z++) 
+		{
+			if (z < 5)
+				System.out.println(Sort[z] + " ");
+		}
+
+	}
+}

@@ -1,0 +1,72 @@
+package program2method2;
+
+import java.util.Scanner;
+
+import Task.array;
+
+// toCheckAnagramgram
+public class Anagram2 {
+
+	static boolean toCheckAnagram(String str1, String str2) {
+
+		char c1[] = str1.toLowerCase().toCharArray();
+		char c2[] = str2.toLowerCase().toCharArray();
+
+		array.sort(c1);
+		array.sort(c2);
+
+		for (int i = 0; i < c2.length; i++) {
+			if (c1[i] != c2[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static void main(String args[]) {
+
+		System.out.println("Enter the Paragraph to check the Anagram or not");
+
+		Scanner input = new Scanner(System.in);
+		String temp = "";
+		int k = 0; // k = array index
+		String s = input.nextLine();
+		String stringtoarray[] = s.split(" "); // Element Split and Store Arrays
+		String[] storearray = new String[s.length()];
+
+		System.out.println("From the given Paragraph Anagram Words are");
+
+		for (int i = 0; i < stringtoarray.length; i++) {
+			for (int j = i + 1; j < stringtoarray.length; j++) {
+				String s2 = stringtoarray[i];
+				if (i == stringtoarray.length - 1) {
+					j = 0;
+					temp = stringtoarray[j];
+				} else {
+					temp = stringtoarray[j];
+				}
+				if (s2.length() == temp.length() && !s2.equals(temp)) {
+					if (toCheckAnagram(s2, temp)) {
+						storearray[k++] = s2;
+						storearray[k++] = temp;
+					}
+				}
+			}
+		}
+
+		for (int m = 0; m < k; m++) {
+			for (int n = m + 1; n < k; n++) {
+				if (storearray[m].equals(storearray[n])) {
+					storearray[n] = "";
+				}
+			}
+		}
+
+		for (int m = 0; m < k; m++) {
+			if (!storearray[m].equals("")) {
+				System.out.println(storearray[m]);
+
+			}
+		}
+	}
+}
