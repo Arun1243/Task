@@ -1,0 +1,33 @@
+package program3method2;
+
+public class WaterStorage2 {
+	public static void main(String args[]) {
+		int waterTank[] = { 7, 0, 4, 2, 5, 0, 6, 4, 0, 5 };
+		int l = waterTank.length;
+		int leftSide[] = new int[l];
+		int rightSide[] = new int[l];
+		int waterlevel = 0;
+
+		leftSide[0] = waterTank[0];
+
+		// To find the left Max Values
+
+		for (int i = 1; i < l; i++)
+			leftSide[i] = Math.max(leftSide[i - 1], waterTank[i]);
+
+		rightSide[l - 1] = waterTank[l - 1];
+
+		// To find the Right Side Max Values
+
+		for (int i = l - 2; i >= 0; i--)
+			rightSide[i] = Math.max(rightSide[i + 1], waterTank[i]);
+
+		// To find the Minimum values Between the leftside and right side arrays
+		// and subtract the initial arrays.
+
+		for (int i = 0; i < l; i++)
+			waterlevel = waterlevel + Math.min(leftSide[i], rightSide[i]) - waterTank[i];
+
+		System.out.println("The obtained Water Blocks are : " + waterlevel);
+	}
+}
