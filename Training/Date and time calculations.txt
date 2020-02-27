@@ -1,0 +1,171 @@
+package Task;
+
+import java.util.Scanner;
+
+public class DateDifference {
+
+	/* By this Method To find the initial Month and Current Month */
+
+	static int month(int i) {
+		int j = (i == 4 || i == 6 || i == 9 || i == 11) ? 30 : (i == 2) ? 28
+				: 31;
+		return j;
+	}
+
+	/* TO Split The String and Store in startDateay */
+
+	static String[] splits(String string) {
+		string = string.replaceAll("[^0-9]", " ");
+		int j = 0;
+		String temp = "";
+		String split[] = new String[string.length()];
+
+		for (int i = 0; i < string.length(); i++) {
+			if (string.charAt(i) == ' ') {
+				j++;
+				temp = "";
+			} else {
+				temp = temp + string.charAt(i);
+			}
+			split[j] = temp;
+		}
+		return split;
+	}
+
+	// By this Method Used to find the leap year and Ternary function Used.
+	static int leapyear(int year, int fDate,int fMon, int fYear) {
+		int i = 0 ;
+		Boolean check = (year % 4 == 0) ? (year % 100 == 0) ? (year % 400 == 0) ? true : false
+				: true : false;
+
+		if(check)
+		{
+			if(year < fYear || year == fYear && fMon >2 || year == fYear && fMon ==2 && fDate ==29 )
+			{
+				i=1;
+			}
+			
+            else
+			{
+				i=0;
+			}
+		}
+
+
+		return i;
+	}
+
+	public static void main(String[] args) {
+
+		while(true){
+
+			int startMonTotal = 0, endMonTotal = 0, leapYearCount = 0;
+			int pDate, pMon, pYear, pHour, pMin, pSec, fDate, fMon,fMon1, fYear, fHour, fMin, fSec, bY, totalNoOfDays, pYear1;
+
+			Scanner input = new Scanner(System.in);
+
+			System.out.print("Enter the Present Date and Time Format : ");
+
+			String string = input.nextLine();
+
+			String[] startDate = splits(string);
+
+			pDate = Integer.parseInt("" + (startDate[0]));
+			pMon = Integer.parseInt("" + (startDate[1]));
+			pYear = Integer.parseInt("" + (startDate[2]));
+			pHour = Integer.parseInt("" + (startDate[3]));
+			pMin = Integer.parseInt("" + (startDate[4]));
+			pSec = Integer.parseInt("" + (startDate[5]));
+			pYear1 = pYear;
+
+			pYear++; // Start Year Increment Beacuse go for Calculate the Start Year
+
+			pDate = month(pMon) - pDate; // Difference Between From Month Date to
+			// Start Date.
+
+			pMon++;
+
+			for (int i = pMon; i <= 12; i++) {
+				startMonTotal = startMonTotal + month(i);// Calculate the Days Based
+				// on Start Months Up to
+				// December Month
+			}
+
+			startMonTotal = startMonTotal + pDate; // add the total Months days and
+			// Start Month Days.
+
+			System.out.print("Enter the Future Date and Time Format : ");
+
+			String e = input.nextLine(); // e = Future Date
+
+			String endDate[] = splits(e);
+
+			fDate = Integer.parseInt("" + (endDate[0]));
+			fMon = Integer.parseInt("" + (endDate[1]));fMon1 = fMon;
+			fYear = Integer.parseInt("" + (endDate[2]));
+			fHour = Integer.parseInt("" + (endDate[3]));
+			fMin = Integer.parseInt("" + (endDate[4]));
+			fSec = Integer.parseInt("" + (endDate[5]));
+			fMon--;
+
+			for (int i = 1; i <= fMon; i++) {
+				endMonTotal = endMonTotal + month(i);
+
+			}
+
+			endMonTotal = endMonTotal + fDate;
+
+			bY = fYear - pYear; // Difference Between the Start and end year
+
+			for (int i = pYear1; i <= fYear; i++) {
+
+				leapYearCount = leapyear(i,fDate,fMon1,fYear) + leapYearCount;
+
+			}
+
+			totalNoOfDays = (bY * 365) + leapYearCount + endMonTotal
+					+ startMonTotal;
+
+			String time = timeCaluculation(pHour, pMin, pSec, fHour, fMin, fSec,
+					totalNoOfDays);
+            System.out.println();
+			System.out
+			.println("Difference Between the Present Date Formate and Future Date Formate is "
+					+ time);
+
+			// System.out.println("Difference Between the Present Date and Future Date: "+
+			// totalNoOfDays + " Days");
+		}
+	}
+
+	private static String timeCaluculation(int pHour, int pMin, int pSec,
+			int fHour, int fMin, int fSec, int totalNoOfDays) {
+		int tHour, tMin, tSec;
+		String time;
+
+		if (fSec >= pSec) {
+			tSec = fSec - pSec;
+		} else {
+			fMin--;
+			tSec = (fSec + 60) - pSec;
+		}
+		if (fMin >= pMin) {
+			tMin = fMin - pMin;
+		} else {
+			fHour--;
+			tMin = (fMin + 60) - pMin;
+		}
+		if (fHour >= pHour) {
+			tHour = fHour - pHour;
+		} else {
+			totalNoOfDays--;
+			tHour = (fHour + 24) - pHour;
+		}
+
+		time = totalNoOfDays + " Days " + tHour + " Hours " + tMin
+				+ " Minutes " + tSec + " Seconds ";
+
+		return time;
+	}
+
+}

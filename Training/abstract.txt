@@ -1,0 +1,159 @@
+Abstract Example with Single Sub Class:
+
+
+public abstract class Animal {
+
+	abstract void sound();
+	abstract int sound(String s);
+	abstract String sound(int a);
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.out.println("String Class");
+		
+	}
+
+}
+
+
+public class Cat extends Animal {
+
+	@Override
+	void sound() {
+		// TODO Auto-generated method stub
+
+		System.out.println("meow");
+	}
+
+	@Override
+	int sound(String s) {
+		// TODO Auto-generated method stub
+		System.out.println(s);
+		return 0;
+	}
+
+	@Override
+	String sound(int a) {
+		// TODO Auto-generated method stub
+		System.out.println(a);
+		return "";
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Cat c = new Cat();
+        c.sound();
+        c.sound(4);
+        c.sound("cat sound meow and 4 leg");
+	}
+
+}
+
+
+
+
+
+
+Abstract Example with Multiple Sub Class:
+
+
+
+public abstract class Animal {
+
+	abstract void sound();
+	
+	abstract int sound(String s);
+	abstract String sound(int a);
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.out.println("String Class");
+		
+	}
+
+}
+
+
+
+public abstract class Cat extends Animal {
+
+	void sound()
+	{
+		System.out.println("Cat");
+	}
+	
+	abstract int sound(String s);
+	abstract String so(String s);
+
+}
+
+
+public abstract class Dog extends Cat {
+
+	
+	 //abstract void sound();
+
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+  
+     
+	}
+
+
+
+	
+	 int sound(String s) {
+	    System.out.println("AB "+ s);
+		 return 0;
+		 
+	 }
+
+
+
+	
+
+}
+
+
+
+public class puppy extends Dog {
+
+	@Override
+	String so(String s) {
+		// TODO Auto-generated method stub
+		System.out.println(s);
+		return null;
+	}
+
+	@Override
+	String sound(int a) {
+		// TODO Auto-generated method stub
+		System.out.println("Sound of puppy is wow wow");
+		return "P";
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+puppy p = new puppy();
+p.sound("Dog Sound");
+p.so("So Pu");
+System.out.println(p.sound(10));
+p.sound();
+	}
+
+//	@Override
+//	void sound() {
+//		// TODO Auto-generated method stub
+//		System.out.println("puppy");
+//	}
+
+	
+	
+
+}
+

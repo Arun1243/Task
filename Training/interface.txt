@@ -1,0 +1,282 @@
+
+1)   Interface Examples:
+
+
+package interfac;
+
+public interface Car {
+
+	void engine();
+	void motor();
+	void Tyre();
+	int brake(String s);
+	String brake(int s);
+	
+     
+	
+	
+}
+
+
+
+package interfac;
+
+ class Honda implements Car {
+
+	@Override
+	public void engine() {
+		// TODO Auto-generated method stub
+	System.out.println("Engine");	
+	}
+
+	@Override
+	public void motor() {
+		// TODO Auto-generated method stub
+		System.out.println("Motor");
+	}
+
+	@Override
+	public void Tyre() {
+		// TODO Auto-generated method stub
+		System.out.println("Tyre");
+	}
+
+	@Override
+	public int brake(String s) {
+		// TODO Auto-generated method stub
+		System.out.println(s);
+		return 0;
+	}
+
+	@Override
+	public String brake(int i) {
+		// TODO Auto-generated method stub
+		System.out.println(i);
+		return null;
+	}
+
+	
+	public static void main(String args[])
+	
+	{
+		Honda h = new Honda();
+		h.brake(10);
+		h.brake("Air Brake");
+		h.motor();
+		h.Tyre();
+		h.engine();
+	}
+	
+}
+
+
+
+
+
+2)   Multiple interface Example:
+
+
+package interfac;
+
+public interface Car {
+
+	void engine();
+	void motor();
+	void Tyre();
+	int brake(String s);
+	String brake(int s);
+	
+     
+	
+	
+}
+
+package interfac;
+
+public interface Honda extends Car {
+
+	void Hondacity();
+	void HondaAccord();
+	
+	
+}
+
+
+package interfac;
+
+public class CarStructure implements Honda {
+
+	
+	public void engine() {
+		// TODO Auto-generated method stub
+System.out.println("Honda Engine");
+	}
+
+	
+	public void motor() {
+		// TODO Auto-generated method stub
+
+	System.out.println("Honda Motor");
+	}
+
+	public void Tyre() {
+		// TODO Auto-generated method stub
+
+		System.out.println("Tyre");
+		
+	}
+
+	public int brake(String s) {
+		// TODO Auto-generated method stub
+		System.out.println(s);
+		return 0;
+	}
+
+	public String brake(int i) {
+		// TODO Auto-generated method stub
+		System.out.println(i);
+		return "Hydraulic Brake";
+	}
+
+	public void Hondacity() {
+		// TODO Auto-generated method stub
+		System.out.println("Diesel Engine");
+
+	}
+
+	public void HondaAccord() {
+		// TODO Auto-generated method stub
+		System.out.println("Petrol Engine");
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		CarStructure cs = new CarStructure();
+		System.out.println(cs.brake(1));
+		cs.brake("ABS");
+		cs.engine();
+        cs.HondaAccord();
+        cs.motor();
+        cs.Hondacity(); 
+	}
+
+
+	
+
+}
+
+
+
+
+3)     Example interface in create static Methods: 
+
+
+
+interface TestInterface 
+{ 
+  
+    public void square (int a); 
+  
+   
+    static void show() 
+    { 
+        System.out.println("Static Method Executed"); 
+    } 
+} 
+  
+class TestClass implements TestInterface 
+{ 
+    
+    public void square (int a) 
+    { 
+        System.out.println(a*a); 
+    } 
+  
+    public static void main(String args[]) 
+    { 
+        TestClass d = new TestClass(); 
+        d.square(4); 
+  
+        TestInterface.show(); 
+    } 
+} 
+
+
+
+4)    Examples interface in create default Methods:
+
+
+interface TestInterface 
+{ 
+   
+    public void square(int a); 
+  
+   
+    default void show() 
+    { 
+      System.out.println("Default Method Executed"); 
+    } 
+} 
+  
+class TestClass implements TestInterface 
+{ 
+   
+    public void square(int a) 
+    { 
+        System.out.println(a*a); 
+    } 
+  
+    public static void main(String args[]) 
+    { 
+        TestClass d = new TestClass(); 
+        d.square(4); 
+  
+  
+        d.show(); 
+    } 
+} 
+
+
+
+
+5)     Example in Multiple implements 
+
+
+interface TestInterface1 
+{ 
+
+	default void show() 
+	{ 
+		System.out.println("Default TestInterface1"); 
+	} 
+} 
+
+interface TestInterface2 
+{ 
+ 
+	static void show() 
+	{ 
+		System.out.println("Default TestInterface2"); 
+	} 
+} 
+
+ 
+class TestClass implements TestInterface1, TestInterface2 
+{ 
+
+	public void show() 
+	{ 
+		TestInterface1.super.show(); 
+		TestInterface2.show(); 
+	} 
+
+	public static void main(String args[]) 
+	{ 
+		TestClass d = new TestClass(); 
+		d.show(); 
+	} 
+} 
+
+
+

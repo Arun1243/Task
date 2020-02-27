@@ -1,0 +1,45 @@
+Java Architecture:
+
+        *     There is a process of Compliation and Interpretation.
+ 
+        *      The Source code Converted into Byte code which is done by Java Complier  
+          
+        *      The Byte Codes are Converted  into Machine Code by the JVM.
+
+        *       The Machine Code is excuted directly by the machine.
+
+
+                  
+
+                  Source Code   ----------->         Java Complier    --------------------->       Byte Code ----------->  JVM   ---------->   OS.
+
+
+
+
+
+Components of   Java Architecture:
+
+
+JVM, JRE,   JDK
+
+
+JVM:
+
+         *      Java   applications are called WORA ( Write Once Run Any Where)   ability to run a code on any Platform.
+
+          *     JVM   interprets the Byte into Machine Code.
+
+
+JVM Performs Function:
+
+
+loads, Verifies and Excute the Code. Provides Runtime Environment.
+
+
+
+JVM     Architecture :
+
+
+        Class Loader   --------->      Method Area, Heap,  Stack,  Native Stack    ----------->       Native interfaces  ---------->   Garbage Collector, JIT Complier 
+                                                                       JVM Memory                                                                        |--------> Native Libraries            Excution Engine
+  

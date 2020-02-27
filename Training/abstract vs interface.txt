@@ -1,0 +1,25 @@
+       Abstract                                                  Interface
+
+
+1)   instance variables are may be final                        1) instance variables are default final variables
+
+or non-final.
+
+
+2)   Variables - final,non-final,static, non-static             2) static and final variables
+
+3)   It have abstract and non-abstract methods                  3) It have only abstract methods. From java 8, It can have default and static methods
+                  
+
+4)   Abstract class can be provide implementation of interface  4) Interface can't provide the implementations of abstract class
+
+5)   Abstract class can be extended using Keyword "Extends"     5) Interface can be implemented using keyword "implements"
+
+6)   A Java abstract class can have class members               6) Java interface are public by default. 
+like private, protected, etc.                      
+
+7)    an abstract class can extend another Java class           7) An interface can extend another Java interface only 
+and implement multiple Java interfaces.                                                             
+
+
+
