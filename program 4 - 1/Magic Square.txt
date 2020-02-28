@@ -1,0 +1,79 @@
+package program4;
+
+public class magic {
+
+	static void magic(int n)
+	{
+
+		int[][] array = new int[n][n];
+
+		int i = n/2;
+		int j = n-1;
+		
+		for(int k =1; k<=n*n;)
+		{
+			if(i==-1 && j==n)
+			{
+				i=0;
+				j=n-2;
+			}
+			if(i<0)
+			{
+				i = n-1;
+			}
+			if(j==n)
+			{
+				j=0;
+			}
+			if(array[i][j] != 0)
+			{
+				i = i+1;
+				j = j-2;
+				continue;
+			}
+			if(array[i][j] == 0)
+			{
+				array[i][j] = k++;
+				i--;
+				j++;
+			}
+			
+		}	
+		
+		
+		
+		
+		System.out.println("Magic Square of "+ n +" is ");
+		
+		
+		for(int r =0; r<n;r++ )
+		{
+			for(int c =0; c<n;c++)
+			{
+				System.out.print(array[r][c] +" ");
+			}
+			System.out.println();
+		}
+
+
+
+	}
+
+
+
+
+
+	public static void main(String[] args) {
+
+		int num = 3;
+        
+		System.out.println(" The Total No. Of Row and Column is " + num *(((num*num-1)/2) +1));
+		
+		magic(num);
+
+
+
+
+	}
+
+}
